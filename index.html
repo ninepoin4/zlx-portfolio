@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>周连旭 — AI 影像 / 工作流 / 全栈</title>
+<meta name="description" content="周连旭：AI 影像、工作流系统与全栈实现。把生成、剪辑与部署，缝成一条可以反复出片的产线。" />
+<meta name="theme-color" content="#08090b" />
+<meta property="og:title" content="周连旭 — 在模型与镜头之间" />
+<meta property="og:description" content="AI 影像 / 工作流系统 / 全栈实现。13 部短片，4 套产线。" />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="/media/hero-poster.jpg" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2308090b'/%3E%3Ccircle cx='16' cy='16' r='5' fill='%23e2452a'/%3E%3C/svg%3E" />
+<link rel="preload" href="/fonts/instrument-serif.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="/fonts/zlx-serif.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="stylesheet" href="/src/styles.css" />
+</head>
+<body>
+
+<!-- grain + vignette -->
+<div class="grain" aria-hidden="true"></div>
+<div class="progress" aria-hidden="true"><i id="progressBar"></i></div>
+
+<!-- loader -->
+<div class="loader" id="loader">
+  <div class="loader__inner">
+    <p class="loader__k">PORTFOLIO — 2026</p>
+    <div class="loader__name" aria-hidden="true"><span>周</span><span>连</span><span>旭</span></div>
+    <div class="loader__bar"><i id="loaderBar"></i></div>
+    <p class="loader__pct"><span id="loaderPct">00</span><em>— 100</em></p>
+  </div>
+</div>
+
+<!-- custom cursor -->
+<div class="cursor" id="cursor" aria-hidden="true">
+  <div class="cursor__ring"><span id="cursorLabel"></span></div>
+  <div class="cursor__dot"></div>
+</div>
+
+<!-- nav -->
+<header class="nav" id="nav">
+  <a class="nav__mark" href="#top" aria-label="回到顶部">
+    <span class="nav__name">周连旭</span>
+    <span class="nav__en">ZHOU LIANXU</span>
+  </a>
+  <nav class="nav__menu" aria-label="主导航">
+    <a href="#work"><b>01</b>影像</a>
+    <a href="#systems"><b>02</b>系统</a>
+    <a href="#about"><b>03</b>关于</a>
+  </nav>
+  <div class="nav__right">
+    <span class="nav__clock" id="clock">--:--</span>
+    <a class="nav__cta" data-magnetic="0.18" href="#contact" data-cursor="联系">联系 <span>↗</span></a>
+  </div>
+</header>
+
+<div class="edge" aria-hidden="true"><span>PORTFOLIO / 2026 / HANGZHOU</span></div>
+
+<main id="main">
+
+  <!-- ================= HERO ================= -->
+  <section class="hero" id="top">
+    <div class="hero__stage">
+      <video class="hero__film" id="heroFilm" autoplay muted loop playsinline preload="auto" poster="/media/hero-poster.jpg">
+        <source src="/media/hero.mp4" type="video/mp4" />
+      </video>
+      <canvas class="hero__gl" id="gl" aria-hidden="true"></canvas>
+      <div class="hero__veil" aria-hidden="true"></div>
+      <div class="hero__vig" aria-hidden="true"></div>
+      <div class="hero__beam" id="beam" aria-hidden="true"></div>
+    </div>
+
+    <div class="hero__content wrap">
+      <div class="hero__top">
+        <p class="eyebrow"><i class="dot"></i>AI CINEMA · WORKFLOW · FULL-STACK</p>
+        <p class="hero__coord">30.2741°N — 120.1551°E<br />HANGZHOU, CN</p>
+      </div>
+
+      <h1 class="hero__title">
+        <span class="line"><span><span class="ch">在</span><span class="ch">模</span><span class="ch">型</span></span></span>
+        <span class="line"><span><span class="ch">与</span><span class="ch">镜</span><span class="ch">头</span></span></span>
+        <span class="line line--last">
+          <span><span class="ch">之</span><span class="ch">间</span><i class="hero__period">.</i></span>
+          <em>between the model<br />and the lens</em>
+        </span>
+      </h1>
+
+      <div class="hero__foot">
+        <p class="hero__lede">把生成、剪辑与部署缝成一条产线。<br />一个人，也能稳定出片。</p>
+        <div class="hero__scroll"><span>SCROLL</span><i></i></div>
+        <p class="hero__count"><b>13</b> FILMS<br /><b>04</b> SYSTEMS</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 00 STATEMENT ================= -->
+  <section class="statement" id="overture">
+    <div class="wrap statement__grid">
+      <div class="label">
+        <span class="label__no">00</span>
+        <span class="label__txt">序 / OVERTURE</span>
+      </div>
+      <p class="statement__text" data-split-words>我把模型、剪辑与部署，<br />缝成一条可以反复出片的产线。</p>
+      <p class="statement__side">一个人 · 一套系统<br />十三个月 · 十三部片</p>
+    </div>
+  </section>
+
+  <!-- ================= 01 WORK ================= -->
+  <section class="works-sec" id="work">
+    <div class="wrap">
+      <header class="sec-head">
+        <div class="label">
+          <span class="label__no">01</span>
+          <span class="label__txt">影像 / FILM</span>
+        </div>
+        <h2 class="sec-title">影像<em>Selected Film</em></h2>
+        <p class="sec-note">2025 — 2026 · 八部精选 · 全部由自建工作流出片</p>
+      </header>
+
+      <ol class="works" id="workList"></ol>
+
+      <div class="reel">
+        <div class="reel__head">
+          <span>ARCHIVE — 13 部成片</span>
+          <span>HOVER TO PAUSE</span>
+        </div>
+        <div class="reel__viewport">
+          <div class="reel__track" id="reelTrack"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 02 SYSTEMS ================= -->
+  <section class="systems" id="systems">
+    <div class="wrap">
+      <header class="sec-head sec-head--paper">
+        <div class="label">
+          <span class="label__no">02</span>
+          <span class="label__txt">系统 / SYSTEMS</span>
+        </div>
+        <h2 class="sec-title">产线<em>Systems, not tools</em></h2>
+        <p class="sec-note">从 ComfyUI 到浏览器工作台，从一张图到一条片。</p>
+      </header>
+
+      <div class="graph" id="graph">
+        <div class="graph__meta">
+          <span class="graph__k">FIG. 01 — PRODUCTION GRAPH</span>
+          <span class="graph__v">本地优先 / 可复用 / 可交付</span>
+        </div>
+        <svg class="graph__svg" viewBox="0 0 1200 196" fill="none" aria-hidden="true">
+          <defs>
+            <linearGradient id="graphLine" x1="0" y1="0" x2="1200" y2="0" gradientUnits="userSpaceOnUse">
+              <stop offset="0" stop-color="#141310" stop-opacity=".22" />
+              <stop offset=".55" stop-color="#141310" stop-opacity=".5" />
+              <stop offset="1" stop-color="#141310" stop-opacity=".16" />
+            </linearGradient>
+          </defs>
+          <path class="graph__line" d="M216 116H276" stroke="url(#graphLine)" stroke-width="1" stroke-dasharray="5 6" />
+          <path class="graph__line" d="M452 116H512" stroke="url(#graphLine)" stroke-width="1" stroke-dasharray="5 6" />
+          <path class="graph__line" d="M688 116H748" stroke="url(#graphLine)" stroke-width="1" stroke-dasharray="5 6" />
+          <path class="graph__line" d="M924 116H984" stroke="url(#graphLine)" stroke-width="1" stroke-dasharray="5 6" />
+          <g class="graph__node" data-i="0">
+            <text x="40" y="54" class="graph__n">01</text>
+            <rect x="40" y="76" width="176" height="80" rx="2" />
+            <text x="62" y="110" class="graph__t">需求</text>
+            <text x="62" y="132" class="graph__s">INPUT</text>
+            <circle cx="40" cy="76" r="3.5" class="graph__p" />
+          </g>
+          <g class="graph__node" data-i="1">
+            <text x="276" y="54" class="graph__n">02</text>
+            <rect x="276" y="76" width="176" height="80" rx="2" />
+            <text x="298" y="110" class="graph__t">模型</text>
+            <text x="298" y="132" class="graph__s">MODEL</text>
+            <circle cx="276" cy="76" r="3.5" class="graph__p" />
+          </g>
+          <g class="graph__node" data-i="2">
+            <text x="512" y="54" class="graph__n">03</text>
+            <rect x="512" y="76" width="176" height="80" rx="2" />
+            <text x="534" y="110" class="graph__t">编排</text>
+            <text x="534" y="132" class="graph__s">GRAPH</text>
+            <circle cx="512" cy="76" r="3.5" class="graph__p" />
+          </g>
+          <g class="graph__node" data-i="3">
+            <text x="748" y="54" class="graph__n">04</text>
+            <rect x="748" y="76" width="176" height="80" rx="2" />
+            <text x="770" y="110" class="graph__t">渲染</text>
+            <text x="770" y="132" class="graph__s">RENDER</text>
+            <circle cx="748" cy="76" r="3.5" class="graph__p" />
+          </g>
+          <g class="graph__node" data-i="4">
+            <text x="984" y="54" class="graph__n">05</text>
+            <rect x="984" y="76" width="176" height="80" rx="2" class="graph__out" />
+            <text x="1006" y="110" class="graph__t">交付</text>
+            <text x="1006" y="132" class="graph__s">DELIVER</text>
+            <circle cx="1102" cy="76" r="3.5" class="graph__p" />
+          </g>
+          <text x="40" y="186" class="graph__s">ONE-PERSON PIPELINE / 2025—2026</text>
+          <text x="1160" y="186" class="graph__s" text-anchor="end">STABLE OUTPUT</text>
+        </svg>
+        <ol class="graph__steps" aria-hidden="true">
+          <li><b>01</b><span>需求</span><em>INPUT</em></li>
+          <li><b>02</b><span>模型</span><em>MODEL</em></li>
+          <li><b>03</b><span>编排</span><em>GRAPH</em></li>
+          <li><b>04</b><span>渲染</span><em>RENDER</em></li>
+          <li><b>05</b><span>交付</span><em>DELIVER</em></li>
+        </ol>
+      </div>
+
+      <div class="sys-grid" id="sysGrid"></div>
+
+      <div class="lab">
+        <p class="lab__title">实验室 / LAB</p>
+        <ul class="lab__list" id="labList"></ul>
+      </div>
+
+      <div class="stats" id="stats"></div>
+    </div>
+  </section>
+
+  <!-- ================= 03 ABOUT ================= -->
+  <section class="about" id="about">
+    <div class="wrap">
+      <header class="sec-head">
+        <div class="label">
+          <span class="label__no">03</span>
+          <span class="label__txt">关于 / ABOUT</span>
+        </div>
+      </header>
+
+      <p class="about__big" data-split-words>营销出身，工程自修。<br />像导演一样想，像工程师一样做。</p>
+
+      <div class="about__cols">
+        <figure class="about__portrait" data-reveal>
+          <span class="about__glow" aria-hidden="true"></span>
+          <img src="/media/portrait.webp" alt="周连旭，2026 年，杭州" width="1016" height="1439" loading="lazy" />
+          <figcaption>周连旭 / ZHOU LIANXU — 2026</figcaption>
+        </figure>
+        <p class="about__body">
+          2025 年从营销管理毕业，进电商做 AI 应用。一年里从 0 搭出出图台与成片产线，也把账号做到 400 万播放。
+          现在做 AI 影像、工作流与全栈实现 —— 一个人的工作室，一条能交付的产线。
+        </p>
+        <dl class="about__spec">
+          <div><dt>意向</dt><dd>AI 产品经理 / 工作流工程师 / 全栈</dd></div>
+          <div><dt>城市</dt><dd>杭州 · 一周内到岗</dd></div>
+          <div><dt>工具</dt><dd>ComfyUI / Cursor / Claude Code / Python</dd></div>
+          <div><dt>延伸</dt><dd>编曲 · 网文 · 跨媒介叙事</dd></div>
+        </dl>
+      </div>
+
+      <ol class="cv" id="cvList"></ol>
+    </div>
+  </section>
+</main>
+
+<!-- ================= CONTACT / FOOTER ================= -->
+<footer class="footer" id="contact">
+  <div class="wrap">
+    <div class="label">
+      <span class="label__no">04</span>
+      <span class="label__txt">联系 / CONTACT</span>
+    </div>
+
+    <a class="footer__cta" data-magnetic="0.05" href="mailto:15666835265@163.com" data-cursor="写信">
+      <span class="footer__cta-txt">一起出片</span>
+      <span class="footer__cta-arrow">↗</span>
+    </a>
+
+    <div class="footer__cols">
+      <div>
+        <p class="footer__k">MAIL</p>
+        <a href="mailto:15666835265@163.com">15666835265@163.com</a>
+      </div>
+      <div>
+        <p class="footer__k">WECHAT</p>
+        <p>ly2336520586</p>
+      </div>
+      <div>
+        <p class="footer__k">TEL</p>
+        <a href="tel:+8613371292462">133 7129 2462</a>
+      </div>
+      <div>
+        <p class="footer__k">ELSEWHERE</p>
+        <a href="https://github.com/ninepoin4" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://ninepoints.top" target="_blank" rel="noopener">ninepoints.top</a>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <span>© 2026 周连旭 · ZHOU LIANXU</span>
+      <span class="footer__built">BUILT WITH THREE.JS + BLENDER</span>
+      <button class="footer__top" id="toTop" type="button">BACK TO TOP ↑</button>
+    </div>
+  </div>
+</footer>
+
+<!-- ================= PLAYER ================= -->
+<div class="player" id="player" role="dialog" aria-modal="true" aria-hidden="true" aria-label="影像播放">
+  <div class="player__bg"></div>
+  <div class="player__body">
+    <div class="player__stage">
+      <video id="playerVideo" playsinline preload="none"></video>
+      <div class="player__bar"><i id="playerBar"></i></div>
+      <button class="player__toggle" id="playerToggle" type="button">⏸</button>
+    </div>
+    <aside class="player__meta">
+      <p class="player__idx" id="playerIdx">01 / 08</p>
+      <h3 class="player__title" id="playerTitle">静观</h3>
+      <p class="player__en" id="playerEn">STILLNESS</p>
+      <p class="player__desc" id="playerDesc"></p>
+      <dl class="player__dl">
+        <div><dt>类别</dt><dd id="playerCat"></dd></div>
+        <div><dt>时长</dt><dd id="playerDur"></dd></div>
+        <div><dt>年份</dt><dd id="playerYear"></dd></div>
+      </dl>
+      <p class="player__note">由自建工作流生成 · 成片节选</p>
+    </aside>
+  </div>
+  <button class="player__close" id="playerClose" type="button">关闭 <span>ESC</span></button>
+</div>
+
+<script type="module" src="/src/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+{
+  "w-product-talk": {
+    "file": "产品展示口播工作流.mp4",
+    "duration": 25.0
+  },
+  "w-product-poem": {
+    "file": "产品意象工作流.mp4",
+    "duration": 20.0
+  },
+  "w-drama": {
+    "file": "剧情工作流.mp4",
+    "duration": 43.19
+  },
+  "w-talk-a": {
+    "file": "口播工作流 (1).mp4",
+    "duration": 25.04
+  },
+  "w-talk-b": {
+    "file": "口播工作流 (3).mp4",
+    "duration": 25.04
+  },
+  "w-talk-c": {
+    "file": "口播工作流 (4).mp4",
+    "duration": 25.04
+  },
+  "w-zen-a": {
+    "file": "禅意氛围感工作流 (1).mp4",
+    "duration": 30.08
+  },
+  "w-zen-b": {
+    "file": "禅意氛围感工作流 (2).mp4",
+    "duration": 30.08
+  },
+  "w-aesthetic-a": {
+    "file": "美学展示工作流 (1).mp4",
+    "duration": 20.0
+  },
+  "w-aesthetic-b": {
+    "file": "美学展示工作流 (2).mp4",
+    "duration": 12.0
+  },
+  "w-detail-a": {
+    "file": "详情页视频工作流 (1).mp4",
+    "duration": 15.2
+  },
+  "w-detail-b": {
+    "file": "详情页视频工作流 (2).mp4",
+    "duration": 15.0
+  },
+  "w-detail-c": {
+    "file": "详情页视频工作流 (3).mp4",
+    "duration": 15.0
+  }
+}

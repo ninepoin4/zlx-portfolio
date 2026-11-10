@@ -1,0 +1,18 @@
+{
+  "name": "zhou-lianxu-portfolio",
+  "private": true,
+  "version": "2.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "node scripts/build.mjs",
+    "preview": "vite preview --port 4173"
+  },
+  "dependencies": {
+    "lenis": "^1.3.11",
+    "three": "^0.187.0"
+  },
+  "devDependencies": {
+    "vite": "^7.1.0"
+  }
+}
