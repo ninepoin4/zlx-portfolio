@@ -51,14 +51,9 @@ public/fonts/         自托管：Instrument Serif、DM Mono、Noto Serif SC 子
 
 ## 部署（GitHub Pages）
 
-站点挂在 `https://ninepoin4.github.io/zlx-portfolio/`，所以 `vite.config.js` 的 `base` 是 `/zlx-portfolio/`，JS 里的媒体路径统一走 `import.meta.env.BASE_URL`。
+线上地址：`https://ninepoin4.github.io/zlx-portfolio/`，由 GitHub Actions 自动发布——推到 `main` 即触发 `.github/workflows/deploy.yml`（`npm ci` → `npm run build` → 上传 `dist/` 作为 Pages 产物）。
 
-`main` 是源码，`gh-pages` 是构建产物，Pages 从 `gh-pages` 根目录发布。改完内容后：
-
-```bash
-npm run build
-git subtree push --prefix dist origin gh-pages   # 或手动把 dist/* 推到 gh-pages
-```
+因为是项目站点（挂在子路径），`vite.config.js` 里 `base: '/zlx-portfolio/'`，JS 中所有媒体路径都走 `import.meta.env.BASE_URL`，不要在代码里写死 `/media/...`。
 
 本地验证子路径行为：`npm run build` 后把 `dist/` 放到任意静态服务器的 `/zlx-portfolio/` 目录下访问。
 
