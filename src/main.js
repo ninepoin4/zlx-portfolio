@@ -109,6 +109,7 @@ const boot = () => {
   const DUR = REDUCED ? 500 : 3500;
   const start = performance.now();
 
+  document.body.classList.add('boot');
   pedal.start();
 
   const tick = (now) => {

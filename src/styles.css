@@ -237,6 +237,9 @@ li { list-style: none; }
   bottom: calc(50% - 102px);
   width: clamp(300px, 35vw, 520px);
   will-change: transform;
+  transform: translateX(-100%);
+}
+.boot .loader__rig {
   animation: loader-ride 3.5s linear forwards;
 }
 .loader__rig svg {
@@ -265,12 +268,14 @@ li { list-style: none; }
 .pelican__wheel {
   transform-box: fill-box;
   transform-origin: center;
+}
+.boot .pelican__wheel {
   animation: wheel-spin 0.92s linear infinite;
 }
 @keyframes wheel-spin {
   to { transform: rotate(360deg); }
 }
-.pelican__bird {
+.boot .pelican__bird {
   animation: bird-bob 1.1s ease-in-out infinite alternate;
 }
 @keyframes bird-bob {
@@ -324,12 +329,13 @@ body.is-loaded .loader {
   }
 }
 @media (prefers-reduced-motion: reduce) {
-  .loader__rig {
+  .loader__rig,
+  .boot .loader__rig {
     animation: none;
     transform: translate3d(calc(50vw - 50%), 0, 0);
   }
-  .pelican__wheel,
-  .pelican__bird {
+  .boot .pelican__wheel,
+  .boot .pelican__bird {
     animation: none;
   }
 }
