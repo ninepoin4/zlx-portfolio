@@ -201,11 +201,45 @@
         <p class="flow__claim-note">用审美挑镜头，用技术把镜头串成产线。<br />文案先审再生成，素材留在任务里，改版只跑后期。</p>
       </div>
 
-      <figure class="flow__shot">
-        <div class="flow__shot-bar">
-          <span>FIG. 02 — WORKBENCH</span>
-          <span>LOCAL-FIRST · BROWSER</span>
+      <div class="flow__sub">
+        <span>OUTPUT / 成片</span>
+        <span>点一次 · 出来是这样</span>
+      </div>
+
+      <div class="flow__out">
+        <ul class="flow__clips">
+          <li>
+            <div class="flow__clip-box">
+              <video class="flow__clip" src="/media/loop/w-zen-a.mp4" poster="/media/poster/w-zen-a.jpg" muted loop playsinline preload="none" aria-label="禅意氛围感成片《静观》"></video>
+            </div>
+            <span class="flow__clip-cap"><b>静观</b><em>STILLNESS</em><i>禅意氛围感 · 30s</i></span>
+          </li>
+          <li>
+            <div class="flow__clip-box">
+              <video class="flow__clip" src="/media/loop/w-aesthetic-a.mp4" poster="/media/poster/w-aesthetic-a.jpg" muted loop playsinline preload="none" aria-label="美学展示成片《珠光》"></video>
+            </div>
+            <span class="flow__clip-cap"><b>珠光</b><em>PEARL LIGHT</em><i>美学展示 · 20s</i></span>
+          </li>
+          <li>
+            <div class="flow__clip-box">
+              <video class="flow__clip" src="/media/loop/w-detail-a.mp4" poster="/media/poster/w-detail-a.jpg" muted loop playsinline preload="none" aria-label="详情页成片《拨发》"></video>
+            </div>
+            <span class="flow__clip-cap"><b>拨发</b><em>THE GESTURE</em><i>详情页视频 · 15s</i></span>
+          </li>
+        </ul>
+        <div class="flow__out-copy">
+          <p class="flow__out-lead">同一台机器，三种气质。</p>
+          <p class="flow__out-note">禅意、美学展示、详情页 —— 三条片子来自三条不同的风格分支。你选风格和时长，剩下的它跑：分镜、生成、配音、字幕、后期。</p>
+          <p class="flow__out-meta"><b>13</b> 条成片 · 全部由这套产线产出</p>
         </div>
+      </div>
+
+      <div class="flow__sub">
+        <span>SYSTEM / 工作台</span>
+        <span>LOCAL-FIRST · BROWSER</span>
+      </div>
+
+      <figure class="flow__shot">
         <div class="flow__shot-img">
           <img src="/media/app-home.webp" alt="图像成片工作台：左侧上传产品图，右侧选内容风格与后期模板，底部是成片时长与参考图" width="1440" height="748" loading="lazy" decoding="async" />
         </div>
@@ -214,6 +248,35 @@
           <span>字幕与花字可上下拖动，重出只跑后期。</span>
         </figcaption>
       </figure>
+
+      <div class="flow__sub">
+        <span>HAND-MADE / 手搓</span>
+        <span>个人全流程 · 2026</span>
+      </div>
+
+      <div class="flow__hand">
+        <div class="flow__hand-copy">
+          <h3>如果你想看我手搓？</h3>
+          <p>这是我的全流程自创 AIGC 视频：脚本、分镜、生成、配音、剪辑一个人做完，不经过上面那条产线。</p>
+        </div>
+        <figure class="flow__film">
+          <!-- 片子剪好后，把这个占位块整段换成：
+               <video src="/media/<文件名>.mp4" poster="/media/<文件名>.jpg" controls playsinline preload="metadata"></video> -->
+          <div class="flow__film-slot">
+            <span class="flow__film-rec"><i></i>REC</span>
+            <span class="flow__film-tc">2026 · 00:00:00</span>
+            <div class="flow__film-center">
+              <p class="flow__film-title">待映</p>
+              <p class="flow__film-note">FULL-PROCESS AIGC FILM · IN PRODUCTION</p>
+            </div>
+          </div>
+        </figure>
+      </div>
+
+      <div class="flow__sub">
+        <span>PIPELINE / 产线</span>
+        <span>六段 · 一次点完</span>
+      </div>
 
       <ol class="flow__steps">
         <li class="flow__step">

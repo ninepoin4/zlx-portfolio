@@ -63,10 +63,10 @@ export const SYSTEMS = [
     fig: 'frames',
   },
   {
-    no: '03', name: 'AutoCut', en: 'BATCH EDITING',
-    desc: '素材混剪、整文件夹批量、AI 补镜。把「剪一条片」变成「跑一个任务」。',
-    tags: ['Python', 'OpenCV', 'LLM'],
-    fig: 'cut',
+    no: '03', name: '知序 Paper Studio', en: 'RESEARCH WORKBENCH',
+    desc: '输入一个题目，先给三个不同的研究方案；选定后生成带文献绑定、三线表和图的参考稿，直出 Word / PDF。',
+    tags: ['Node.js', 'Vite', 'TypeScript'],
+    fig: 'paper',
   },
   {
     no: '04', name: '出图台', en: 'ATELIER',
@@ -77,7 +77,6 @@ export const SYSTEMS = [
 ];
 
 export const LAB = [
-  ['知序 Paper Studio', '中文 AI 研究工作台'],
   ['影游 Yingyou', 'AIGC 视频编排成互动影游'],
   ['Pulse Sonora', 'Three.js 音频反应可视化'],
   ['Rust Liner', 'Three.js 无尽跑酷'],

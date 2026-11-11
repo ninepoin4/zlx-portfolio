@@ -236,6 +236,27 @@ if (reelTrack) {
 }
 
 /* ------------------------------------------------------------
+   workflow clips — play only while in view
+   ------------------------------------------------------------ */
+const clips = $$('.flow__clip');
+if (clips.length && !REDUCED) {
+  const clipIO = new IntersectionObserver((ents) => {
+    ents.forEach((e) => {
+      const v = e.target;
+      if (e.isIntersecting) {
+        v.play().catch(() => {});
+      } else {
+        v.pause();
+      }
+    });
+  }, { threshold: 0.2 });
+  clips.forEach((v) => clipIO.observe(v));
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) clips.forEach((v) => v.pause());
+  });
+}
+
+/* ------------------------------------------------------------
    render: systems
    ------------------------------------------------------------ */
 const FIGURES = {
@@ -268,6 +289,24 @@ const FIGURES = {
         <rect x="274" y="26" width="46" height="54" class="fig-stroke" />
       </g>
       <circle cx="326" cy="16" r="3" class="fig-red" />
+    </svg>`,
+  paper: `
+    <svg viewBox="0 0 340 92" role="img" aria-label="三方案成稿示意">
+      <text x="0" y="10" class="fig-text">3 PLANS / 1 MANUSCRIPT</text>
+      <rect x="0" y="24" width="36" height="18" class="fig-stroke" />
+      <rect x="0" y="48" width="36" height="18" class="fig-stroke" />
+      <rect x="0" y="72" width="36" height="18" class="fig-fill" />
+      <path class="fig-stroke" d="M44 33h16v12h14" />
+      <path class="fig-stroke" d="M44 57h30" />
+      <path class="fig-stroke" d="M44 81h16V69h14" />
+      <rect x="82" y="21" width="82" height="60" class="fig-stroke" />
+      <path class="fig-dash" d="M94 37h56M94 46h56M94 55h38M94 64h46" />
+      <rect x="182" y="28" width="56" height="30" class="fig-stroke" />
+      <path class="fig-dash" d="M182 41h56M212 28v30" />
+      <path class="fig-stroke" d="M258 78V40M258 78h60" />
+      <path class="fig-stroke" d="M266 70l9-11 9 6 9-17 10 7" />
+      <circle cx="303" cy="48" r="2.5" class="fig-red" />
+      <circle cx="270" cy="18" r="2.5" class="fig-red" />
     </svg>`,
   cut: `
     <svg viewBox="0 0 340 92" role="img" aria-label="批量剪辑示意">

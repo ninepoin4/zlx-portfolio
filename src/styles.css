@@ -1031,7 +1031,6 @@ body.is-loaded .hero__title em { opacity: 1; transform: translateY(0); }
   gap: clamp(24px, 5vw, 80px);
   align-items: end;
   margin-top: clamp(46px, 7vh, 84px);
-  padding-bottom: clamp(42px, 6vh, 66px);
 }
 .flow__claim > p:first-child {
   font-family: var(--serif);
@@ -1077,7 +1076,7 @@ body.is-loaded .hero__title em { opacity: 1; transform: translateY(0); }
 .flow__steps {
   display: grid;
   grid-template-columns: repeat(6, minmax(0, 1fr));
-  margin: clamp(44px, 6vh, 76px) 0 0;
+  margin: 0;
   padding: 0;
   list-style: none;
   border-top: 1px solid var(--line);
@@ -1196,6 +1195,177 @@ body.is-loaded .hero__title em { opacity: 1; transform: translateY(0); }
 }
 .flow__link:hover { color: var(--bone); border-color: var(--line-strong); }
 .flow__link i { font-style: normal; color: var(--red); }
+
+.flow__sub {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  margin: clamp(46px, 6vh, 76px) 0 18px;
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  color: var(--dim-2);
+}
+.flow__out {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  gap: clamp(24px, 4vw, 64px);
+  align-items: center;
+}
+.flow__clips {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(10px, 1.2vw, 18px);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.flow__clip-box {
+  position: relative;
+  aspect-ratio: 9 / 16;
+  border: 1px solid var(--line);
+  background: #0b0c0f;
+  overflow: hidden;
+}
+.flow__clip { display: block; width: 100%; height: 100%; object-fit: cover; }
+.flow__clip-cap {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 7px;
+  margin-top: 10px;
+}
+.flow__clip-cap b { font-family: var(--serif); font-weight: 400; font-size: 15px; }
+.flow__clip-cap em {
+  font-family: var(--mono);
+  font-style: normal;
+  font-size: 8px;
+  letter-spacing: 0.16em;
+  color: var(--dim-2);
+}
+.flow__clip-cap i {
+  margin-left: auto;
+  font-family: var(--mono);
+  font-style: normal;
+  font-size: 8px;
+  letter-spacing: 0.12em;
+  color: var(--dim-2);
+  white-space: nowrap;
+}
+.flow__out-lead {
+  font-family: var(--serif);
+  font-size: clamp(24px, 2.3vw, 36px);
+  line-height: 1.28;
+  letter-spacing: -0.02em;
+}
+.flow__out-note {
+  margin-top: 16px;
+  font-size: 13px;
+  line-height: 1.95;
+  color: var(--dim);
+  max-width: 38ch;
+}
+.flow__out-meta {
+  margin-top: 22px;
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.16em;
+  color: var(--dim-2);
+}
+.flow__out-meta b { font-weight: 400; color: var(--bone); }
+.flow__hand {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  gap: clamp(24px, 4vw, 64px);
+  align-items: center;
+}
+.flow__hand-copy h3 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(28px, 3.4vw, 52px);
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+}
+.flow__hand-copy p {
+  margin-top: 18px;
+  font-size: 13px;
+  line-height: 1.95;
+  color: var(--dim);
+  max-width: 36ch;
+}
+.flow__film { margin: 0; }
+.flow__film video {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--line);
+  background: #0a0b0d;
+}
+.flow__film-slot {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  border: 1px solid var(--line);
+  background:
+    radial-gradient(70% 70% at 50% 45%, rgba(236, 230, 219, 0.05), rgba(236, 230, 219, 0) 70%),
+    #0a0b0d;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+.flow__film-slot::before,
+.flow__film-slot::after {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border: 1px solid var(--line-strong);
+}
+.flow__film-slot::before { top: 12px; left: 12px; border-right: 0; border-bottom: 0; }
+.flow__film-slot::after { bottom: 12px; right: 12px; border-left: 0; border-top: 0; }
+.flow__film-rec {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-family: var(--mono);
+  font-size: 8px;
+  letter-spacing: 0.2em;
+  color: var(--dim-2);
+}
+.flow__film-rec i {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--red);
+  animation: rec 1.8s ease-in-out infinite;
+}
+@keyframes rec { 50% { opacity: 0.18; } }
+.flow__film-tc {
+  position: absolute;
+  bottom: 14px;
+  right: 16px;
+  font-family: var(--mono);
+  font-size: 8px;
+  letter-spacing: 0.16em;
+  color: var(--dim-2);
+}
+.flow__film-center { text-align: center; }
+.flow__film-title {
+  font-family: var(--serif);
+  font-size: clamp(30px, 3vw, 46px);
+  letter-spacing: 0.16em;
+  text-indent: 0.16em;
+  color: var(--bone);
+}
+.flow__film-note {
+  margin-top: 14px;
+  font-family: var(--mono);
+  font-size: 8px;
+  letter-spacing: 0.22em;
+  color: var(--dim-2);
+}
 
 /* ============================================================
    systems (paper)
@@ -1833,6 +2003,9 @@ body.is-loaded .hero__title em { opacity: 1; transform: translateY(0); }
   .flow__step:nth-child(n + 4) { border-top: 1px solid var(--line); }
   .flow__style { grid-template-columns: 34px minmax(0, 1fr) auto; }
   .flow__style-tag { grid-column: 2 / -1; }
+  .flow__out { grid-template-columns: minmax(0, 1fr); gap: 30px; }
+  .flow__out-note { max-width: 52ch; }
+  .flow__hand { grid-template-columns: minmax(0, 1fr); gap: 26px; }
 }
 
 @media (max-width: 860px) {
@@ -1844,6 +2017,20 @@ body.is-loaded .hero__title em { opacity: 1; transform: translateY(0); }
 }
 
 @media (max-width: 620px) {
+  .flow__clips {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    margin-right: calc(var(--pad) * -1);
+    padding-right: var(--pad);
+    scrollbar-width: none;
+  }
+  .flow__clips::-webkit-scrollbar { display: none; }
+  .flow__clips li { flex: 0 0 74vw; scroll-snap-align: start; }
+  .flow__clip-cap { flex-direction: column; align-items: flex-start; gap: 3px; }
+  .flow__clip-cap i { margin-left: 0; }
+  .flow__film-slot { aspect-ratio: 4 / 3; }
   .flow__steps { grid-template-columns: minmax(0, 1fr); border-top: 0; }
   .flow__step, .flow__step + .flow__step {
     display: grid;
