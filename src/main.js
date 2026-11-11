@@ -309,13 +309,14 @@ const FIGURES = {
 const sysGrid = $('#sysGrid');
 SYSTEMS.forEach((s) => {
   const el = document.createElement('article');
-  el.className = 'sys-card';
+  el.className = 'sys-card' + (s.main ? ' sys-card--main' : '');
   el.innerHTML = `
     <div class="sys-card__top">
       <span class="sys-card__no">${s.no}</span>
       <span class="sys-card__en">${s.en}</span>
     </div>
     <h3 class="sys-card__name">${s.name}</h3>
+    ${s.main ? '<a class="sys-card__link" href="#flow">MAIN WORK · 见 02 工作流 ↗</a>' : ''}
     <p class="sys-card__desc">${s.desc}</p>
     <div class="sys-card__fig">${FIGURES[s.fig] || ''}</div>
     <div class="sys-card__tags">${s.tags.map((t) => `<span>${t}</span>`).join('')}</div>`;
@@ -450,7 +451,7 @@ splitEls.forEach((el) => {
   splitChars(el);
   io.observe(el);
 });
-$$('.sec-head, .work, .sys-card, .stat, .cv li, .graph, .reel, .about__portrait').forEach((el) => {
+$$('.sec-head, .work, .sys-card, .stat, .cv li, .graph, .reel, .about__portrait, .flow__claim, .flow__shot, .flow__step, .flow__style, .flow__spec').forEach((el) => {
   el.setAttribute('data-reveal', '');
   io.observe(el);
 });

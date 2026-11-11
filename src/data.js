@@ -57,7 +57,7 @@ export const SYSTEMS = [
     fig: 'timeline',
   },
   {
-    no: '02', name: 'LumaForge', en: 'IMAGE → FILM',
+    no: '02', name: 'LumaForge', en: 'IMAGE → FILM', main: true,
     desc: '一张产品图，走完卖点识别、文案、分镜、生成、配音、字幕，直出 1080×1920。文案先审再生成，不花冤枉钱。',
     tags: ['FastAPI', 'MiniMax H3', 'FFmpeg'],
     fig: 'frames',

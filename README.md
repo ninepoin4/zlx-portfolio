@@ -7,6 +7,8 @@ Dark editorial one-pager — ink / bone / cinnabar, Chinese serif display, a Ble
 
 首屏标题里的「镜头」每 2 秒翻一次牌：镜头 → 文字 → 审美 → 流程 → 世界，遮罩翻页、不换行宽。
 
+章节：00 序 · 01 影像 · **02 工作流** · 03 系统 · 04 关于 · 05 联系。02 是主打章节 —— 图像成片（LumaForge）的工作台实拍、六段产线、五种内容风格与交付规格。
+
 ## 跑起来
 
 ```bash
