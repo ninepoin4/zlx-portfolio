@@ -5,6 +5,8 @@ Dark editorial one-pager — ink / bone / cinnabar, Chinese serif display, a Ble
 
 开场是一辆 SVG 手绘的鹈鹕骑单车：3.5 秒从左骑到右，车轮自转，蹬踏用两段 IK 每帧算膝盖位置，身体随踏频轻轻起伏。
 
+首屏标题里的「镜头」每 2 秒翻一次牌：镜头 → 文字 → 审美 → 流程 → 世界，遮罩翻页、不换行宽。
+
 ## 跑起来
 
 ```bash

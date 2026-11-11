@@ -119,11 +119,55 @@ const boot = () => {
     else {
       pedal.stop();
       document.body.classList.add('is-loaded');
+      cycleWord.start();
       setTimeout(() => { $('#loader').style.display = 'none'; }, 1500);
     }
   };
   requestAnimationFrame(tick);
 };
+
+/* ------------------------------------------------------------
+   hero word cycle
+   ------------------------------------------------------------ */
+const cycleWord = (() => {
+  const cell = $('.hero__cycle');
+  const stack = cell && cell.querySelector('.hero__cycle-in');
+  if (!cell || !stack || REDUCED) return { start() {} };
+  const items = stack.children.length;
+  let i = 0;
+  let visible = true;
+
+  const paint = (n, animate) => {
+    if (!animate) {
+      stack.style.transition = 'none';
+      stack.style.setProperty('--cyc', n);
+      void stack.offsetHeight;
+      stack.style.transition = '';
+    } else {
+      stack.style.setProperty('--cyc', n);
+    }
+  };
+
+  const tick = () => {
+    if (!visible) return;
+    i += 1;
+    if (i >= items - 1) {
+      paint(items - 1, true);
+      setTimeout(() => { i = 0; paint(0, false); }, 640);
+    } else {
+      paint(i, true);
+    }
+  };
+
+  return {
+    start() {
+      if ('IntersectionObserver' in window) {
+        new IntersectionObserver(([e]) => { visible = e.isIntersecting; }).observe(cell);
+      }
+      setTimeout(() => { setInterval(tick, 2000); }, 1100);
+    },
+  };
+})();
 
 /* ------------------------------------------------------------
    text splitting

@@ -605,6 +605,35 @@ body.is-loaded .hero__film { opacity: 1; }
   white-space: nowrap;
 }
 .hero__period { font-style: normal; color: var(--red); margin-left: -0.14em; }
+.hero__cycle {
+  display: inline-block;
+  height: 0.9em;
+  overflow: hidden;
+  vertical-align: top;
+}
+.hero__cycle-in {
+  display: block;
+  transform: translateY(calc(var(--cyc, 0) * -0.9em));
+  transition: transform 0.54s cubic-bezier(0.72, 0, 0.24, 1);
+}
+.hero__cycle-in i {
+  display: block;
+  height: 0.9em;
+  line-height: 0.9;
+  font-style: normal;
+  white-space: nowrap;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
 .ch {
   display: inline-block;
   transform: translateY(115%);
