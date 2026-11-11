@@ -236,23 +236,19 @@ if (reelTrack) {
 }
 
 /* ------------------------------------------------------------
-   workflow clips — play only while in view
+   workbench hotspots — tap to reveal the panel's job
    ------------------------------------------------------------ */
-const clips = $$('.flow__clip');
-if (clips.length && !REDUCED) {
-  const clipIO = new IntersectionObserver((ents) => {
-    ents.forEach((e) => {
-      const v = e.target;
-      if (e.isIntersecting) {
-        v.play().catch(() => {});
-      } else {
-        v.pause();
-      }
+const zones = $$('.flow__zone');
+if (zones.length) {
+  zones.forEach((z) => {
+    z.addEventListener('click', () => {
+      const on = z.classList.contains('is-on');
+      zones.forEach((o) => o.classList.remove('is-on'));
+      if (!on) z.classList.add('is-on');
     });
-  }, { threshold: 0.2 });
-  clips.forEach((v) => clipIO.observe(v));
-  document.addEventListener('visibilitychange', () => {
-    if (document.hidden) clips.forEach((v) => v.pause());
+  });
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.flow__zone')) zones.forEach((o) => o.classList.remove('is-on'));
   });
 }
 
