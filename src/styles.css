@@ -617,7 +617,32 @@ body.is-loaded .hero__title em { opacity: 1; transform: translateY(0); }
 .statement {
   padding: clamp(96px, 14vh, 170px) 0 clamp(60px, 8vh, 100px);
   position: relative;
+  isolation: isolate;
 }
+.sec-sky {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+  user-select: none;
+  filter: brightness(0.46) saturate(0.94) contrast(1.04);
+}
+.sec-sky--ov { object-position: 76% 46%; }
+.sec-sky--ct { object-position: 50% 32%; }
+.statement::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, #08090b 0%, rgba(8, 9, 11, 0.94) 24%, rgba(8, 9, 11, 0.5) 52%, rgba(8, 9, 11, 0.08) 78%, rgba(8, 9, 11, 0.45) 100%),
+    linear-gradient(180deg, #08090b 0%, rgba(8, 9, 11, 0.35) 26%, rgba(8, 9, 11, 0.18) 68%, #08090b 100%);
+}
+.statement__grid { position: relative; z-index: 1; }
 .statement__grid {
   display: grid;
   grid-template-columns: 180px minmax(0, 1fr);
@@ -1182,8 +1207,18 @@ body.is-loaded .hero__title em { opacity: 1; transform: translateY(0); }
   height: 60vw;
   transform: translateX(-50%);
   background: radial-gradient(circle, rgba(226, 69, 42, 0.12), transparent 62%);
+  z-index: 1;
   pointer-events: none;
 }
+.footer::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, #08090b 0%, rgba(8, 9, 11, 0.66) 14%, rgba(8, 9, 11, 0.34) 42%, rgba(8, 9, 11, 0.16) 66%, rgba(8, 9, 11, 0.54) 90%, rgba(8, 9, 11, 0.72) 100%);
+}
+.footer .wrap { position: relative; z-index: 2; }
 .footer__cta {
   display: flex;
   align-items: flex-end;
@@ -1223,8 +1258,9 @@ body.is-loaded .hero__title em { opacity: 1; transform: translateY(0); }
   font-family: var(--mono);
   font-size: 8px;
   letter-spacing: 0.22em;
-  color: var(--dim-2);
+  color: rgba(236, 230, 219, 0.58);
   margin-bottom: 10px;
+  text-shadow: 0 1px 12px rgba(4, 5, 6, 0.85);
 }
 .footer__cols a, .footer__cols p { font-size: 12.5px; line-height: 2; }
 .footer__cols a { display: inline-block; position: relative; }
@@ -1252,7 +1288,8 @@ body.is-loaded .hero__title em { opacity: 1; transform: translateY(0); }
   font-family: var(--mono);
   font-size: 8.5px;
   letter-spacing: 0.14em;
-  color: var(--dim);
+  color: rgba(236, 230, 219, 0.55);
+  text-shadow: 0 1px 12px rgba(4, 5, 6, 0.85);
   position: relative;
   z-index: 1;
 }

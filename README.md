@@ -38,6 +38,8 @@ site/
     hero-poster.jpg     首帧海报
     sky-h.webp          星海底图 · 桌面（Midjourney 生成，2000w）
     sky-v.webp          星海底图 · 竖屏（1000w）
+    sky-overture.webp   00 序 星云（1800w）
+    sky-contact.webp    04 联系 星云（1000w）
     portrait.webp       透明底半身像（关于区）
     poster/*.jpg        13 张作品海报（720w）
     loop/*.mp4          13 条 hover 预览（480w / 5.6s）
@@ -48,7 +50,7 @@ site/
 ## 资产来源
 
 - 13 条成片来自 `工作流效果` 目录，用 `tools/extract_media.py` 抽帧/转码；`tools/make_players.py` 生成播放器片段。
-- 星海底图由 Midjourney 生成，桌面 / 竖屏两版，压暗、去饱和后垫在 WebGL 星场与缎带之下。
+- 星海底图由 Midjourney 生成：首屏桌面 / 竖屏两版，00 序与 04 联系各一张，压暗、去饱和后垫在内容之下，再叠一层墨色蒙版控制文字对比。
 - Hero ribbon 由 Blender 5.2 程序化生成（`blender/ribbon_v3.py`），Cycles OPTIX，AgX Medium High Contrast；以 `mix-blend-mode: lighten` 叠在星场上，黑底自然消失。
 - 中文字体是 Noto Serif SC 的子集（约 95 KB）。**若新增文案出现新字**，重新子集：
 
