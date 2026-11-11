@@ -3,6 +3,8 @@
 一个人，一套系统，十三部片子。  
 Dark editorial one-pager — ink / bone / cinnabar, Chinese serif display, a Blender-rendered chrome ribbon floating in a three.js star sea.
 
+开场是一辆 SVG 手绘的鹈鹕骑单车：3.5 秒从左骑到右，车轮自转，蹬踏用两段 IK 每帧算膝盖位置，身体随踏频轻轻起伏。
+
 ## 跑起来
 
 ```bash

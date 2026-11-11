@@ -44,22 +44,79 @@ const scrollTo = (target, offset = 0) => {
    loader
    ------------------------------------------------------------ */
 let booted = false;
+
+/* pelican legs: two-link IK on the crank */
+const pedal = (() => {
+  const BB = [210, 182];
+  const CR = 21;
+  const HIP = [204, 108];
+  const L1 = 46;
+  const L2 = 54;
+  const el = {
+    legN: $('#legNear'),
+    crankN: $('#crankNear'),
+    pedalN: $('#pedalNear'),
+    footN: $('#footNear'),
+  };
+  const ik = (fx, fy) => {
+    const dx = fx - HIP[0];
+    const dy = fy - HIP[1];
+    const d = Math.hypot(dx, dy) || 1;
+    const a = (L1 * L1 - L2 * L2 + d * d) / (2 * d);
+    const h = Math.sqrt(Math.max(0, L1 * L1 - a * a));
+    const ux = dx / d;
+    const uy = dy / d;
+    return [HIP[0] + a * ux + h * uy, HIP[1] + a * uy - h * ux];
+  };
+  const pose = (ph, off, leg, crank, ped, foot) => {
+    const th = ph + off;
+    const fx = BB[0] + Math.cos(th) * CR;
+    const fy = BB[1] + Math.sin(th) * CR;
+    const k = ik(fx, fy);
+    const p = `${fx.toFixed(1)} ${fy.toFixed(1)}`;
+    leg.setAttribute('d', `M${HIP[0]} ${HIP[1]}L${k[0].toFixed(1)} ${k[1].toFixed(1)}L${p}`);
+    crank.setAttribute('d', `M${BB[0]} ${BB[1]}L${p}`);
+    ped.setAttribute('d', `M${(fx - 6).toFixed(1)} ${(fy + 1.5).toFixed(1)}h12`);
+    if (foot) foot.setAttribute('d', `M${p}l10 2M${p}l9 5M${p}l5 6`);
+  };
+  let raf = 0;
+  let last = 0;
+  let ph = 0;
+  return {
+    start() {
+      if (raf || !el.legN || REDUCED) return;
+      last = performance.now();
+      const loop = (now) => {
+        const dt = Math.min(64, now - last);
+        last = now;
+        ph += (dt / 1100) * Math.PI * 2;
+        pose(ph, 0, el.legN, el.crankN, el.pedalN, el.footN);
+        raf = requestAnimationFrame(loop);
+      };
+      raf = requestAnimationFrame(loop);
+    },
+    stop() {
+      cancelAnimationFrame(raf);
+      raf = 0;
+    },
+  };
+})();
+
 const boot = () => {
   if (booted) return;
   booted = true;
-  const bar = $('#loaderBar');
   const pct = $('#loaderPct');
-  const DUR = REDUCED ? 300 : 1500;
+  const DUR = REDUCED ? 500 : 3500;
   const start = performance.now();
+
+  pedal.start();
 
   const tick = (now) => {
     const t = Math.min(1, (now - start) / DUR);
-    const eased = 1 - Math.pow(1 - t, 3);
-    const v = Math.round(eased * 100);
-    bar.style.width = `${v}%`;
-    pct.textContent = pad2(v);
+    if (pct) pct.textContent = pad2(Math.round(t * 100));
     if (t < 1) requestAnimationFrame(tick);
     else {
+      pedal.stop();
       document.body.classList.add('is-loaded');
       setTimeout(() => { $('#loader').style.display = 'none'; }, 1500);
     }

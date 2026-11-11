@@ -24,11 +24,60 @@
 
 <!-- loader -->
 <div class="loader" id="loader">
-  <div class="loader__inner">
-    <p class="loader__k">PORTFOLIO — 2026</p>
-    <div class="loader__name" aria-hidden="true"><span>周</span><span>连</span><span>旭</span></div>
-    <div class="loader__bar"><i id="loaderBar"></i></div>
-    <p class="loader__pct"><span id="loaderPct">00</span><em>— 100</em></p>
+  <p class="loader__k">PORTFOLIO — 2026</p>
+  <div class="loader__stage" aria-hidden="true">
+    <div class="loader__rule"></div>
+    <div class="loader__rig" id="loaderRig">
+      <svg class="pelican" viewBox="0 0 470 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g stroke="#ece6db" stroke-linecap="round" stroke-linejoin="round">
+          <g class="pelican__wheel">
+            <circle cx="116" cy="184" r="52" stroke-width="2.4"/>
+            <circle cx="116" cy="184" r="45" stroke-width="1" stroke-opacity=".28"/>
+            <path d="M64 184H168M116 132V236M79.2 147.2L152.8 220.8M152.8 147.2L79.2 220.8" stroke-width="1.2" stroke-opacity=".4"/>
+            <circle cx="116" cy="184" r="4" fill="#e2452a" stroke="none"/>
+          </g>
+          <g class="pelican__wheel">
+            <circle cx="328" cy="184" r="52" stroke-width="2.4"/>
+            <circle cx="328" cy="184" r="45" stroke-width="1" stroke-opacity=".28"/>
+            <path d="M276 184H380M328 132V236M291.2 147.2L364.8 220.8M364.8 147.2L291.2 220.8" stroke-width="1.2" stroke-opacity=".4"/>
+            <circle cx="328" cy="184" r="4" fill="#e2452a" stroke="none"/>
+          </g>
+          <g stroke-width="2.6" stroke-opacity=".9">
+            <path d="M210 182L116 184"/>
+            <path d="M210 182L172 110"/>
+            <path d="M172 110L116 184"/>
+            <path d="M210 182L284 124"/>
+            <path d="M172 110L288 104"/>
+            <path d="M288 104L284 124"/>
+            <path d="M284 124L328 184"/>
+            <path d="M288 104L297 91"/>
+            <path d="M292 91H316" stroke-width="3.4"/>
+          </g>
+          <g transform="translate(170 106) rotate(-3)"><rect x="-20" y="-4.5" width="40" height="9" rx="4.5" fill="#ece6db" stroke="none"/></g>
+        </g>
+        <g class="pelican__bird">
+          <path d="M166 96C148 92 134 88 126 90C134 102 150 108 166 104Z" fill="#ece6db"/>
+          <ellipse cx="206" cy="88" rx="46" ry="30" fill="#ece6db" transform="rotate(-8 206 88)"/>
+          <path d="M234 70C250 64 248 46 260 38" stroke="#ece6db" stroke-width="19" stroke-linecap="round"/>
+          <ellipse cx="265" cy="36" rx="15" ry="13.6" fill="#ece6db" transform="rotate(-16 265 36)"/>
+          <path d="M280 40L353 43C342 78 302 84 280 48Z" fill="#e2452a"/>
+          <path d="M277 27.5L352 34.5L350 40L277 38.2Z" fill="#cfc5b4"/>
+          <circle cx="273" cy="30" r="2.6" fill="#08090b"/>
+          <path d="M178 76C198 66 226 74 238 92C226 102 194 104 178 94Z" fill="#d3cbba"/>
+          <path d="M190 82C202 79 216 83 227 90" stroke="#08090b" stroke-opacity=".16" stroke-width="1.4"/>
+          <path d="M186 89C199 88 211 91 220 97" stroke="#08090b" stroke-opacity=".16" stroke-width="1.4"/>
+          <path d="M232 74C258 74 282 82 301 89L298 96C278 94 252 92 230 90Z" fill="#ece6db"/>
+        </g>
+        <path id="crankNear" d="M210 182L216.9 202" stroke="#ece6db" stroke-width="2.6" stroke-linecap="round"/>
+        <path id="legNear" d="M204 108L225.5 148.7L216.9 202" stroke="#ece6db" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+        <path id="footNear" d="M216.9 202l10 2M216.9 202l9 5M216.9 202l5 6" stroke="#ece6db" stroke-width="2.2" stroke-linecap="round"/>
+        <path id="pedalNear" d="M210.9 203.5h12" stroke="#ece6db" stroke-width="3" stroke-linecap="round"/>
+      </svg>
+    </div>
+  </div>
+  <div class="loader__foot">
+    <p class="loader__name">周连旭<em>/ ZHOU LIANXU</em></p>
+    <p class="loader__pct"><span id="loaderPct">00</span><em>/ 100</em></p>
   </div>
 </div>
 

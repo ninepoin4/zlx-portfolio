@@ -205,66 +205,134 @@ li { list-style: none; }
   inset: 0;
   z-index: 500;
   background: var(--ink);
-  display: grid;
-  place-items: center;
-  transition: transform 1s var(--ease-io) 0.15s;
-}
-.loader__inner {
-  width: min(520px, 78vw);
-  text-align: center;
+  overflow: hidden;
+  transition: transform 1.05s var(--ease-io) 0.1s;
 }
 .loader__k {
+  position: absolute;
+  top: clamp(20px, 3.4vh, 34px);
+  left: var(--pad);
   font-family: var(--mono);
   font-size: 9px;
   letter-spacing: 0.34em;
   color: var(--dim);
-  margin-bottom: 28px;
+}
+.loader__stage {
+  position: absolute;
+  inset: 0;
+}
+.loader__rule {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(50% + 102px);
+  height: 1px;
+  background: rgba(236, 230, 219, 0.13);
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 12%, #000 88%, transparent 100%);
+  mask-image: linear-gradient(90deg, transparent 0%, #000 12%, #000 88%, transparent 100%);
+}
+.loader__rig {
+  position: absolute;
+  left: 0;
+  bottom: calc(50% - 102px);
+  width: clamp(300px, 35vw, 520px);
+  will-change: transform;
+  animation: loader-ride 3.5s linear forwards;
+}
+.loader__rig svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+.pelican__puff {
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: puff 0.66s linear infinite;
+}
+.pelican__puff:nth-child(2) { animation-delay: 0.22s; }
+.pelican__puff:nth-child(3) { animation-delay: 0.44s; }
+@keyframes puff {
+  0% { opacity: 0; transform: translate(0, 0) scale(0.5); }
+  18% { opacity: 0.45; }
+  100% { opacity: 0; transform: translate(-58px, -7px) scale(1.7); }
+}
+@keyframes loader-ride {
+  from { transform: translate3d(-100%, 0, 0); }
+  to { transform: translate3d(calc(100vw + 14px), 0, 0); }
+}
+.pelican__wheel {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: wheel-spin 0.92s linear infinite;
+}
+@keyframes wheel-spin {
+  to { transform: rotate(360deg); }
+}
+.pelican__bird {
+  animation: bird-bob 1.1s ease-in-out infinite alternate;
+}
+@keyframes bird-bob {
+  from { transform: translateY(0); }
+  to { transform: translateY(1.8px); }
+}
+.loader__foot {
+  position: absolute;
+  left: var(--pad);
+  right: var(--pad);
+  bottom: clamp(20px, 3.4vh, 34px);
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 20px;
 }
 .loader__name {
-  display: flex;
-  justify-content: center;
-  gap: 0.06em;
   font-family: var(--serif);
-  font-size: clamp(48px, 7vw, 78px);
-  line-height: 1;
-  letter-spacing: 0.02em;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  color: var(--bone);
 }
-.loader__name span {
-  display: inline-block;
-  transform: translateY(120%);
-  opacity: 0;
-  animation: loader-char 1.1s var(--ease) forwards;
-}
-.loader__name span:nth-child(1) { animation-delay: 0.05s; }
-.loader__name span:nth-child(2) { animation-delay: 0.13s; }
-.loader__name span:nth-child(3) { animation-delay: 0.21s; }
-@keyframes loader-char {
-  to { transform: translateY(0); opacity: 1; }
-}
-.loader__bar {
-  margin: 40px auto 16px;
-  width: 100%;
-  height: 1px;
-  background: rgba(236, 230, 219, 0.14);
-  overflow: hidden;
-}
-.loader__bar i {
-  display: block;
-  height: 100%;
-  width: 0;
-  background: var(--bone);
+.loader__name em {
+  font-family: var(--mono);
+  font-style: normal;
+  font-size: 9px;
+  letter-spacing: 0.26em;
+  color: var(--dim-2);
+  margin-left: 12px;
 }
 .loader__pct {
   font-family: var(--mono);
-  font-size: 10px;
+  font-size: 9px;
   letter-spacing: 0.2em;
   color: var(--bone);
-  display: flex;
-  justify-content: space-between;
 }
-.loader__pct em { font-style: normal; color: var(--dim-2); }
-body.is-loaded .loader { transform: translateY(-101%); }
-body.is-loaded .loader__inner { opacity: 0; transition: opacity 0.4s ease; }
+.loader__pct em {
+  font-style: normal;
+  color: var(--dim-2);
+}
+body.is-loaded .loader {
+  transform: translateY(-101%);
+}
+@media (max-width: 860px) {
+  .loader__rig {
+    width: min(64vw, 330px);
+    bottom: calc(50% - 74px);
+  }
+  .loader__rule {
+    top: calc(50% + 74px);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .loader__rig {
+    animation: none;
+    transform: translate3d(calc(50vw - 50%), 0, 0);
+  }
+  .pelican__wheel,
+  .pelican__bird {
+    animation: none;
+  }
+}
 
 /* ============================================================
    nav
