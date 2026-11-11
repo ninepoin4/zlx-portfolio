@@ -1,13 +1,12 @@
 # 周连旭 · Portfolio 2026
 
-一个人，一套系统，十三部片子。
+一个人，一套系统，十三部片子。  
 Dark editorial one-pager — ink / bone / cinnabar, Chinese serif display, a Blender-rendered chrome ribbon floating in a three.js star sea.
-
-**线上**：https://ninepoin4.github.io/zlx-portfolio/
 
 ## 跑起来
 
 ```bash
+cd site
 npm install
 npm run dev        # http://localhost:5173
 ```
@@ -15,47 +14,56 @@ npm run dev        # http://localhost:5173
 生产构建与预览：
 
 ```bash
-npm run build      # 输出 dist/
+npm run build      # 输出 site/dist
 npm run preview    # http://localhost:4173
 ```
 
-> Windows 下若 `esbuild` 报 `Access is denied`（临时目录权限），`scripts/build.mjs` 已把 TEMP 指向项目内 `.tmp`，直接用 `npm run build` 即可。
+> Windows 下若 `esbuild` 报 `Access is denied`（临时目录权限），构建时指定本地临时目录：
+> `TEMP="D:\path\to\site\.tmp" TMP="D:\path\to\site\.tmp" npx vite build`
 
 ## 结构
 
 ```
-index.html            全部语义结构（loader / nav / hero / 00–04 / player）
-scripts/build.mjs     构建包装（本地 TEMP，规避 Windows 临时目录权限）
-vite.config.js        base `/zlx-portfolio/` / chunk 上限
-hero/ribbon.py        Blender 5.2 程序化缎带（Cycles），hero.mp4 的出处
-src/styles.css        设计系统：墨黑 #08090b、骨白 #ece6db、朱砂 #e2452a、纸白 #e9e3d7
-src/main.js           渲染作品/系统/数据、Lenis、滚动揭示、hover 预览、播放器、光标
-src/scene.js          three.js 星海：四层景深星点（银河带 / 远景 / 中景 / 近景光斑）
-                      + 三团星云辉光，闪烁、视差、滚动漂移；桌面约 1.7 万点，移动端 42%
-src/data.js           ← 改内容只动这里：FILMS / WORKS / SYSTEMS / LAB / STATS / CV
-public/media/
-  hero.mp4            9s 无缝循环，Blender Cycles 渲染 216 帧 1280×720
-  hero-poster.jpg     首帧海报
-  portrait.webp       透明底半身像（关于区）
-  poster/*.jpg        13 张作品海报（720w）
-  loop/*.mp4          13 条 hover 预览（480w / 5.6s）
-  player/*.mp4        13 条播放器片段（720w / 12s）
-public/fonts/         自托管：Instrument Serif、DM Mono、Noto Serif SC 子集
+site/
+  index.html            全部语义结构（loader / nav / hero / 00–04 / player）
+  scripts/build.mjs     构建包装（本地 TEMP，规避 Windows 临时目录权限）
+  vite.config.js        base / chunk 上限
+  src/styles.css        设计系统：墨黑 #08090b、骨白 #ece6db、朱砂 #e2452a、纸白 #e9e3d7
+  src/main.js           渲染作品/系统/数据、Lenis、滚动揭示、hover 预览、播放器、光标
+  src/scene.js          three.js 星海：四层景深星点（银河带 / 远景 / 中景 / 近景光斑）
+                        + 三团星云辉光，闪烁、视差、滚动漂移；桌面约 1.7 万点，移动端 42%
+  src/data.js           ← 改内容只动这里：FILMS / WORKS / SYSTEMS / LAB / STATS / CV
+  public/media/
+    hero.mp4            9s 无缝循环，Blender Cycles 渲染 216 帧 1280×720
+    hero-poster.jpg     首帧海报
+    sky-h.webp          星海底图 · 桌面（Midjourney 生成，2000w）
+    sky-v.webp          星海底图 · 竖屏（1000w）
+    portrait.webp       透明底半身像（关于区）
+    poster/*.jpg        13 张作品海报（720w）
+    loop/*.mp4          13 条 hover 预览（480w / 5.6s）
+    player/*.mp4        13 条播放器片段（720w / 12s）
+  public/fonts/         自托管：Instrument Serif、DM Mono、Noto Serif SC 子集
 ```
 
 ## 资产来源
 
-- 13 条成片来自 `工作流效果` 目录，抽帧/转码生成海报、hover 循环与播放器片段（原始素材与生成脚本未随仓库发布）。
-- Hero ribbon 由 Blender 5.2 程序化生成（`hero/ribbon.py`，Cycles OPTIX，AgX Medium High Contrast），渲染 216 帧后以 `mix-blend-mode: lighten` 叠在星场上，黑底自然消失。
-- 中文字体是 Noto Serif SC 的子集（约 95 KB）。**若新增文案出现新字**，需要重新子集，否则会回退到系统字体。
+- 13 条成片来自 `工作流效果` 目录，用 `tools/extract_media.py` 抽帧/转码；`tools/make_players.py` 生成播放器片段。
+- 星海底图由 Midjourney 生成，桌面 / 竖屏两版，压暗、去饱和后垫在 WebGL 星场与缎带之下。
+- Hero ribbon 由 Blender 5.2 程序化生成（`blender/ribbon_v3.py`），Cycles OPTIX，AgX Medium High Contrast；以 `mix-blend-mode: lighten` 叠在星场上，黑底自然消失。
+- 中文字体是 Noto Serif SC 的子集（约 95 KB）。**若新增文案出现新字**，重新子集：
 
-## 部署（GitHub Pages）
+```bash
+pyftsubset tools/noto-serif-sc.woff2 --text-file=tools/chars.txt \
+  --flavor=woff2 --output-file=site/public/fonts/zlx-serif.woff2 \
+  --layout-features='palt,kern,vert'
+```
 
-线上地址：`https://ninepoin4.github.io/zlx-portfolio/`，由 GitHub Actions 自动发布——推到 `main` 即触发 `.github/workflows/deploy.yml`（`npm ci` → `npm run build` → 上传 `dist/` 作为 Pages 产物）。
+`tools/chars.txt` 由 `index.html / data.js / main.js` 里出现过的字符生成。
 
-因为是项目站点（挂在子路径），`vite.config.js` 里 `base: '/zlx-portfolio/'`，JS 中所有媒体路径都走 `import.meta.env.BASE_URL`，不要在代码里写死 `/media/...`。
+## 部署
 
-本地验证子路径行为：`npm run build` 后把 `dist/` 放到任意静态服务器的 `/zlx-portfolio/` 目录下访问。
+`site/dist` 是纯静态目录，丢到任意静态托管（Vercel / Netlify / Cloudflare Pages / 自己的服务器）即可。  
+`/media` 与 `/fonts` 使用绝对路径，所以站点需要挂在域名根目录（或同步修改 `vite.config.js` 的 `base` 与代码里的绝对路径）。
 
 ## 交互
 

@@ -125,7 +125,7 @@ li { list-style: none; }
 .hero__vig {
   position: absolute;
   inset: 0;
-  z-index: 2;
+  z-index: 3;
   pointer-events: none;
   background:
     radial-gradient(120% 90% at 50% 45%, transparent 42%, rgba(4, 5, 6, 0.55) 100%),
@@ -390,10 +390,23 @@ body.is-loaded .loader__inner { opacity: 0; transition: opacity 0.4s ease; }
   isolation: isolate;
 }
 .hero__stage { position: absolute; inset: 0; z-index: 0; background: #050607; }
-.hero__gl {
+.hero__sky {
   position: absolute;
   inset: 0;
   z-index: 0;
+  pointer-events: none;
+  background: #050607 url('/media/sky-h.webp') center 66% / cover no-repeat;
+  filter: brightness(0.62) saturate(0.86) contrast(1.05);
+  opacity: 0;
+  transition: opacity 2.6s ease;
+  -webkit-mask-image: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.4) 24%, #000 58%, #000 88%, rgba(0, 0, 0, 0.9) 100%);
+  mask-image: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.4) 24%, #000 58%, #000 88%, rgba(0, 0, 0, 0.9) 100%);
+}
+body.is-loaded .hero__sky { opacity: 1; }
+.hero__gl {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
   width: 100%;
   height: 100%;
   opacity: 0;
@@ -403,7 +416,7 @@ body.is-loaded .hero__gl { opacity: 1; }
 .hero__film {
   position: absolute;
   inset: 0;
-  z-index: 1;
+  z-index: 2;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -418,14 +431,14 @@ body.is-loaded .hero__film { opacity: 1; }
 .hero__veil {
   position: absolute;
   inset: 0;
-  z-index: 2;
+  z-index: 3;
   background:
     linear-gradient(90deg, rgba(8, 9, 11, 0.97) 0%, rgba(8, 9, 11, 0.88) 20%, rgba(8, 9, 11, 0.48) 46%, rgba(8, 9, 11, 0.04) 70%, rgba(8, 9, 11, 0.14) 100%),
     linear-gradient(180deg, rgba(8, 9, 11, 0.72) 0%, transparent 26%, transparent 62%, #08090b 100%);
 }
 .hero__beam {
   position: absolute;
-  z-index: 2;
+  z-index: 3;
   width: 54vw;
   height: 54vw;
   left: var(--bx, 62%);
@@ -439,7 +452,7 @@ body.is-loaded .hero__film { opacity: 1; }
 
 .hero__content {
   position: relative;
-  z-index: 3;
+  z-index: 4;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -475,6 +488,7 @@ body.is-loaded .hero__film { opacity: 1; }
   50% { opacity: 0.35; transform: scale(0.8); }
 }
 .hero__coord {
+  text-shadow: 0 1px 14px rgba(4, 5, 6, 0.85), 0 0 3px rgba(4, 5, 6, 0.6);
   font-family: var(--mono);
   font-size: 9px;
   letter-spacing: 0.16em;
@@ -1470,9 +1484,14 @@ body.is-loaded .hero__title em { opacity: 1; transform: translateY(0); }
 }
 
 @media (max-width: 860px) {
+  .hero__sky {
+    background-image: url('/media/sky-v.webp');
+    background-position: center 58%;
+  }
   .hero__veil {
     background:
-      linear-gradient(180deg, rgba(8, 9, 11, 0.97) 0%, rgba(8, 9, 11, 0.82) 9%, rgba(8, 9, 11, 0.34) 26%, rgba(8, 9, 11, 0) 52%, rgba(8, 9, 11, 0.5) 100%),
-      linear-gradient(90deg, rgba(8, 9, 11, 0.6) 0%, rgba(8, 9, 11, 0) 60%);
+      linear-gradient(180deg, rgba(8, 9, 11, 0.97) 0%, rgba(8, 9, 11, 0.8) 10%, rgba(8, 9, 11, 0.28) 26%, rgba(8, 9, 11, 0) 48%, rgba(8, 9, 11, 0.55) 80%, #08090b 100%),
+      radial-gradient(110% 62% at 6% 68%, rgba(8, 9, 11, 0.6), rgba(8, 9, 11, 0) 62%),
+      linear-gradient(90deg, rgba(8, 9, 11, 0.55) 0%, rgba(8, 9, 11, 0) 62%);
   }
 }
