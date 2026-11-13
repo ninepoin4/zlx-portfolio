@@ -236,6 +236,39 @@ if (reelTrack) {
 }
 
 /* ------------------------------------------------------------
+   workflow film — custom play button, native controls after start
+   ------------------------------------------------------------ */
+const filmVideo = $('.flow__video');
+const filmPlay = $('.flow__play');
+if (filmVideo && filmPlay) {
+  filmPlay.addEventListener('click', () => {
+    filmVideo.controls = true;
+    filmVideo.play().catch(() => {});
+    filmPlay.classList.add('is-off');
+  });
+  filmVideo.addEventListener('ended', () => {
+    filmVideo.controls = false;
+    filmPlay.classList.remove('is-off');
+  });
+}
+
+/* the one film that opens the section — loops while in view */
+const peeks = $$('.flow__peek-v');
+if (peeks.length && !REDUCED) {
+  const peekIO = new IntersectionObserver((ents) => {
+    ents.forEach((e) => {
+      const v = e.target;
+      if (e.isIntersecting) v.play().catch(() => {});
+      else v.pause();
+    });
+  }, { threshold: 0.25 });
+  peeks.forEach((v) => peekIO.observe(v));
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) peeks.forEach((v) => v.pause());
+  });
+}
+
+/* ------------------------------------------------------------
    workbench hotspots — tap to reveal the panel's job
    ------------------------------------------------------------ */
 const zones = $$('.flow__zone');

@@ -199,6 +199,10 @@
       <div class="flow__claim">
         <p>我不手搓视频，<br />我创作流程<i>.</i></p>
         <p class="flow__claim-note">用审美挑镜头，用技术把镜头串成产线。<br />文案先审再生成，素材留在任务里，改版只跑后期。</p>
+        <figure class="flow__peek">
+          <video class="flow__peek-v" src="/media/loop/w-product-poem.mp4" poster="/media/poster/w-product-poem.jpg" muted loop playsinline preload="none" aria-label="概念片《香篆》：麻布、香炉、串珠，没有一句台词"></video>
+          <figcaption>这条也是它做的</figcaption>
+        </figure>
       </div>
 
       <div class="flow__sub">
@@ -239,16 +243,17 @@
           <p>这是我的全流程自创 AIGC 视频：脚本、分镜、生成、配音、剪辑一个人做完，不经过上面那条产线。</p>
         </div>
         <figure class="flow__film">
-          <!-- 片子剪好后，把这个占位块整段换成：
-               <video src="/media/<文件名>.mp4" poster="/media/<文件名>.jpg" controls playsinline preload="metadata"></video> -->
-          <div class="flow__film-slot">
-            <span class="flow__film-rec"><i></i>REC</span>
-            <span class="flow__film-tc">2026 · 00:00:00</span>
-            <div class="flow__film-center">
-              <p class="flow__film-title">待映</p>
-              <p class="flow__film-note">FULL-PROCESS AIGC FILM · IN PRODUCTION</p>
-            </div>
+          <div class="flow__player">
+            <video class="flow__video" src="/media/handmade.mp4" poster="/media/handmade.jpg" playsinline preload="none"></video>
+            <button type="button" class="flow__play" aria-label="播放全片，61 秒">
+              <span class="flow__play-ring"><i></i></span>
+              <span class="flow__play-txt">PLAY · 01:01</span>
+            </button>
           </div>
+          <figcaption>
+            <span>61 秒 · 一个人，从脚本做到成片</span>
+            <span>2026 / 16:9</span>
+          </figcaption>
         </figure>
       </div>
 
