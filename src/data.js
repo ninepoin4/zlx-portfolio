@@ -85,7 +85,7 @@ export const LAB = [
 export const STATS = [
   { value: 400, suffix: '万+', label: '全平台累计播放' },
   { value: 300, suffix: '万+', label: 'B 站频道播放' },
-  { value: 7000, suffix: '+', label: '全平台粉丝' },
+  { value: 8000, suffix: '+', label: '全平台粉丝' },
   { value: 200, suffix: '%', label: '美工部提效' },
 ];
 
