@@ -1045,6 +1045,7 @@ body.is-loaded .hero__title em { opacity: 1; transform: translateY(0); }
   color: var(--dim);
   padding-bottom: 8px;
 }
+.flow__proof { display: inline-block; margin-top: 7px; font-weight: 500; color: var(--bone); }
 .flow__peek { margin: 0; width: 100%; max-width: 190px; justify-self: end; }
 .flow__peek-v {
   display: block;
