@@ -1,8 +1,8 @@
 import { defineConfig } from 'vite';
 
-// Deployed as a GitHub Pages project site: https://ninepoin4.github.io/zlx-portfolio/
+// Served at the custom domain root: https://tomatocat.top/
 export default defineConfig({
-  base: '/zlx-portfolio/',
+  base: '/',
   build: {
     chunkSizeWarningLimit: 900,
   },
