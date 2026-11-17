@@ -705,6 +705,11 @@ body.is-loaded .hero__title em { opacity: 1; transform: translateY(0); }
   text-align: right;
   line-height: 2.2;
 }
+.hero__count b.cn {
+  font-size: 19px;
+  letter-spacing: 0.02em;
+  margin-right: 2px;
+}
 .hero__count b {
   font-family: var(--serif-en);
   font-weight: 400;
