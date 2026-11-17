@@ -16,10 +16,6 @@ export const FILMS = {
 
 export const WORKS = [
   {
-    slug: 'w-zen-a', title: '静观', en: 'STILLNESS', cat: '氛围叙事', dur: 30, year: 2026,
-    desc: '佛龛的灰、合十的手、一串南红。让情绪先于卖点出现。',
-  },
-  {
     slug: 'w-aesthetic-a', title: '珠光', en: 'PEARL LIGHT', cat: '品牌影像', dur: 20, year: 2026,
     desc: '珍珠贴着锁骨，侧光只留一道。',
   },
@@ -28,24 +24,12 @@ export const WORKS = [
     desc: '火山石、海水、巴洛克珍珠。把材质拍成触感。',
   },
   {
-    slug: 'w-detail-a', title: '拨发', en: 'THE GESTURE', cat: '详情页视频', dur: 15, year: 2026,
-    desc: '抬手拨发的一瞬，戒指才进入画面。',
+    slug: 'w-detail-b', title: '克制', en: 'RESTRAINT', cat: '详情页视频', dur: 15, year: 2026,
+    desc: '海边黄昏，橄榄绿针织。珠纹金圈配梯方钻，光不强，刚好。',
   },
   {
-    slug: 'w-drama', title: '木梳', en: 'THE COMB', cat: 'AI 短剧', dur: 43, year: 2025,
-    desc: '两代人隔着一张木桌，和一把梳子。',
-  },
-  {
-    slug: 'w-product-poem', title: '香篆', en: 'INCENSE', cat: '概念片', dur: 20, year: 2026,
-    desc: '麻布、香炉、串珠。没有一句台词。',
-  },
-  {
-    slug: 'w-product-talk', title: '金丝', en: 'GOLD THREAD', cat: '产品口播', dur: 25, year: 2026,
-    desc: '手部特写加三条卖点，一条过。',
-  },
-  {
-    slug: 'w-talk-c', title: '领口', en: 'NECKLINE', cat: '电商口播', dur: 25, year: 2026,
-    desc: '领口留白，正好放一串珠子。',
+    slug: 'w-detail-c', title: '留白', en: 'NEGATIVE SPACE', cat: '详情页视频', dur: 15, year: 2026,
+    desc: '黑高领、窗光、人看别处。耳饰只占画面一角。',
   },
 ];
 

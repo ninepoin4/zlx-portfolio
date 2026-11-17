@@ -749,7 +749,7 @@ const openArchive = (slug) => {
     year: 2026,
     slug,
     desc: '同一套产线上长出来的一条片子。生成、剪辑、字幕、成片，全部跑在自己的工作流里。',
-  }, 'ARCHIVE / 13', '—');
+  }, 'ARCHIVE', '—');
 };
 
 const closePlayer = () => {
