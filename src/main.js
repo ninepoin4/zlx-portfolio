@@ -112,7 +112,7 @@ const boot = () => {
   if (booted) return;
   booted = true;
   const pct = $('#loaderPct');
-  const DUR = REDUCED ? 500 : 3500;
+  const DUR = REDUCED ? 500 : 2700;
   const start = performance.now();
 
   document.body.classList.add('boot');

@@ -240,7 +240,7 @@ li { list-style: none; }
   transform: translateX(-100%);
 }
 .boot .loader__rig {
-  animation: loader-ride 3.5s linear forwards;
+  animation: loader-ride 2.7s linear forwards;
 }
 .loader__rig svg {
   display: block;
